@@ -5,8 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="02-Business\" />
-    <Folder Include="01-Models\" />
+    <Compile Remove="01-Models\**" />
+    <Compile Remove="02-Business\**" />
+    <Content Remove="01-Models\**" />
+    <Content Remove="02-Business\**" />
+    <EmbeddedResource Remove="01-Models\**" />
+    <EmbeddedResource Remove="02-Business\**" />
+    <None Remove="01-Models\**" />
+    <None Remove="02-Business\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -17,6 +26,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DependencyInjectionExtension\DependencyInjectionExtension.csproj" />
   </ItemGroup>
 
 </Project>

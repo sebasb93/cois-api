@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using COIS_Models.cois_contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +12,18 @@ namespace cois_api.Controllers
     [Route("api/Test")]
     public class TestController : Controller
     {
-        [HttpGet]
-        public string Test()
+        private IItemBusiness _itemBusiness;
+
+        public TestController(IItemBusiness itemBusiness)
         {
-            var response = "test response";
-            return response;
+            _itemBusiness = itemBusiness;
+        }
+
+        [HttpGet]
+        public IActionResult Test()
+        {
+            var res = _itemBusiness.Test();
+            return new JsonResult("Success: " + res) { StatusCode = 200 };
         }
     }
 }
